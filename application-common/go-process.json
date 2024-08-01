@@ -74,21 +74,21 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "process_resident_memory_bytes{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}",
+          "expr": "process_resident_memory_bytes{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}} - resident",
+          "legendFormat": "{{pod}} - resident",
           "metric": "process_resident_memory_bytes",
           "refId": "A",
           "step": 4
         },
         {
-          "expr": "process_virtual_memory_bytes{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}",
+          "expr": "process_virtual_memory_bytes{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}} - virtual",
+          "legendFormat": "{{pod}} - virtual",
           "metric": "process_virtual_memory_bytes",
           "refId": "B",
           "step": 4
@@ -188,21 +188,21 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(process_resident_memory_bytes{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}[$interval])",
+          "expr": "rate(process_resident_memory_bytes{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}[$interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}} - resident",
+          "legendFormat": "{{pod}} - resident",
           "metric": "process_resident_memory_bytes",
           "refId": "A",
           "step": 4
         },
         {
-          "expr": "deriv(process_virtual_memory_bytes{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}[$interval])",
+          "expr": "deriv(process_virtual_memory_bytes{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}[$interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}} - virtual",
+          "legendFormat": "{{pod}} - virtual",
           "metric": "process_virtual_memory_bytes",
           "refId": "B",
           "step": 4
@@ -302,42 +302,42 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "go_memstats_alloc_bytes{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}",
+          "expr": "go_memstats_alloc_bytes{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}} - bytes allocated",
+          "legendFormat": "{{pod}} - bytes allocated",
           "metric": "go_memstats_alloc_bytes",
           "refId": "A",
           "step": 4
         },
         {
-          "expr": "rate(go_memstats_alloc_bytes_total{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}[30s])",
+          "expr": "rate(go_memstats_alloc_bytes_total{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}[30s])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}} - alloc rate",
+          "legendFormat": "{{pod}} - alloc rate",
           "metric": "go_memstats_alloc_bytes_total",
           "refId": "B",
           "step": 4
         },
         {
-          "expr": "go_memstats_stack_inuse_bytes{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}",
+          "expr": "go_memstats_stack_inuse_bytes{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}} - stack inuse",
+          "legendFormat": "{{pod}} - stack inuse",
           "metric": "go_memstats_stack_inuse_bytes",
           "refId": "C",
           "step": 4
         },
         {
-          "expr": "go_memstats_heap_inuse_bytes{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_nameod=~\"^($pod)$\"}",
+          "expr": "go_memstats_heap_inuse_bytes{namespace=~\"^($namespace)$\",podod=~\"^($pod)$\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}} - heap inuse",
+          "legendFormat": "{{pod}} - heap inuse",
           "metric": "go_memstats_heap_inuse_bytes",
           "refId": "D",
           "step": 4
@@ -437,42 +437,42 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "deriv(go_memstats_alloc_bytes{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}[$interval])",
+          "expr": "deriv(go_memstats_alloc_bytes{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}[$interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}} - bytes allocated",
+          "legendFormat": "{{pod}} - bytes allocated",
           "metric": "go_memstats_alloc_bytes",
           "refId": "A",
           "step": 4
         },
         {
-          "expr": "rate(go_memstats_alloc_bytes_total{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}[$interval])",
+          "expr": "rate(go_memstats_alloc_bytes_total{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}[$interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}} - alloc rate",
+          "legendFormat": "{{pod}} - alloc rate",
           "metric": "go_memstats_alloc_bytes_total",
           "refId": "B",
           "step": 4
         },
         {
-          "expr": "deriv(go_memstats_stack_inuse_bytes{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}[$interval])",
+          "expr": "deriv(go_memstats_stack_inuse_bytes{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}[$interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}} - stack inuse",
+          "legendFormat": "{{pod}} - stack inuse",
           "metric": "go_memstats_stack_inuse_bytes",
           "refId": "C",
           "step": 4
         },
         {
-          "expr": "deriv(go_memstats_heap_inuse_bytes{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}[$interval])",
+          "expr": "deriv(go_memstats_heap_inuse_bytes{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}[$interval])",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}} - heap inuse",
+          "legendFormat": "{{pod}} - heap inuse",
           "metric": "go_memstats_heap_inuse_bytes",
           "refId": "D",
           "step": 4
@@ -567,11 +567,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "process_open_fds{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}",
+          "expr": "process_open_fds{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "metric": "process_open_fds",
           "refId": "A",
           "step": 4
@@ -666,11 +666,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "deriv(process_open_fds{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}[$interval])",
+          "expr": "deriv(process_open_fds{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}[$interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "metric": "process_open_fds",
           "refId": "A",
           "step": 4
@@ -765,11 +765,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "go_goroutines{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}",
+          "expr": "go_goroutines{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "metric": "go_goroutines",
           "refId": "A",
           "step": 4
@@ -864,11 +864,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "go_gc_duration_seconds{kubernetes_namespace=~\"^($namespace)$\",kubernetes_pod_name=~\"^($pod)$\"}",
+          "expr": "go_gc_duration_seconds{namespace=~\"^($namespace)$\",pod=~\"^($pod)$\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}: {{quantile}}",
+          "legendFormat": "{{pod}}: {{quantile}}",
           "metric": "go_gc_duration_seconds",
           "refId": "A",
           "step": 4
@@ -931,7 +931,7 @@
           "value": "logging"
         },
         "datasource": "thanos",
-        "definition": "label_values(go_memstats_alloc_bytes, kubernetes_namespace)",
+        "definition": "label_values(go_memstats_alloc_bytes, namespace)",
         "hide": 0,
         "includeAll": false,
         "index": -1,
@@ -939,7 +939,7 @@
         "multi": false,
         "name": "namespace",
         "options": [],
-        "query": "label_values(go_memstats_alloc_bytes, kubernetes_namespace)",
+        "query": "label_values(go_memstats_alloc_bytes, namespace)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -960,7 +960,7 @@
           ]
         },
         "datasource": "thanos",
-        "definition": "label_values(process_resident_memory_bytes{kubernetes_namespace=\"$namespace\"}, kubernetes_pod_name)",
+        "definition": "label_values(process_resident_memory_bytes{namespace=\"$namespace\"}, pod)",
         "hide": 0,
         "includeAll": false,
         "index": -1,
@@ -968,7 +968,7 @@
         "multi": true,
         "name": "pod",
         "options": [],
-        "query": "label_values(process_resident_memory_bytes{kubernetes_namespace=\"$namespace\"}, kubernetes_pod_name)",
+        "query": "label_values(process_resident_memory_bytes{namespace=\"$namespace\"}, pod)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,

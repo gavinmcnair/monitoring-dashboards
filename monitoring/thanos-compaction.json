@@ -77,7 +77,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(thanos_compact_group_compactions_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, group)",
+          "expr": "sum(rate(thanos_compact_group_compactions_total{namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, group)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -173,7 +173,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(thanos_compact_group_compactions_failures_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) / sum(rate(thanos_compact_group_compactions_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval]))",
+          "expr": "sum(rate(thanos_compact_group_compactions_failures_total{namespace=\"$namespace\",job=~\"$job\"}[$interval])) / sum(rate(thanos_compact_group_compactions_total{namespace=\"$namespace\",job=~\"$job\"}[$interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -281,7 +281,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(thanos_compact_downsample_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) by (group)",
+          "expr": "sum(rate(thanos_compact_downsample_total{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) by (group)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -377,7 +377,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(thanos_compact_downsample_failures_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) / sum(rate(thanos_compact_downsample_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval]))",
+          "expr": "sum(rate(thanos_compact_downsample_failures_total{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) / sum(rate(thanos_compact_downsample_total{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -485,7 +485,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(thanos_compact_garbage_collection_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) by (job)",
+          "expr": "sum(rate(thanos_compact_garbage_collection_total{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) by (job)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -581,7 +581,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(thanos_compact_garbage_collection_failures_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) / sum(rate(thanos_compact_garbage_collection_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval]))",
+          "expr": "sum(rate(thanos_compact_garbage_collection_failures_total{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) / sum(rate(thanos_compact_garbage_collection_total{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -674,7 +674,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.99, sum(rate(thanos_compact_garbage_collection_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) by (le)) * 1",
+          "expr": "histogram_quantile(0.99, sum(rate(thanos_compact_garbage_collection_duration_seconds_bucket{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) by (le)) * 1",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -683,7 +683,7 @@
           "step": 10
         },
         {
-          "expr": "sum(rate(thanos_compact_garbage_collection_duration_seconds_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) * 1 / sum(rate(thanos_compact_garbage_collection_duration_seconds_count{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval]))",
+          "expr": "sum(rate(thanos_compact_garbage_collection_duration_seconds_sum{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) * 1 / sum(rate(thanos_compact_garbage_collection_duration_seconds_count{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -692,7 +692,7 @@
           "step": 10
         },
         {
-          "expr": "histogram_quantile(0.50, sum(rate(thanos_compact_garbage_collection_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (le)) * 1",
+          "expr": "histogram_quantile(0.50, sum(rate(thanos_compact_garbage_collection_duration_seconds_bucket{namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (le)) * 1",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -800,7 +800,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(thanos_blocks_meta_syncs_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) by (job)",
+          "expr": "sum(rate(thanos_blocks_meta_syncs_total{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) by (job)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -896,7 +896,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(thanos_blocks_meta_sync_failures_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) / sum(rate(thanos_blocks_meta_syncs_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval]))",
+          "expr": "sum(rate(thanos_blocks_meta_sync_failures_total{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) / sum(rate(thanos_blocks_meta_syncs_total{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -989,7 +989,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.99, sum(rate(thanos_blocks_meta_sync_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) by (le)) * 1",
+          "expr": "histogram_quantile(0.99, sum(rate(thanos_blocks_meta_sync_duration_seconds_bucket{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) by (le)) * 1",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -998,7 +998,7 @@
           "step": 10
         },
         {
-          "expr": "sum(rate(thanos_blocks_meta_sync_duration_seconds_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) * 1 / sum(rate(thanos_blocks_meta_sync_duration_seconds_count{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval]))",
+          "expr": "sum(rate(thanos_blocks_meta_sync_duration_seconds_sum{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) * 1 / sum(rate(thanos_blocks_meta_sync_duration_seconds_count{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1007,7 +1007,7 @@
           "step": 10
         },
         {
-          "expr": "histogram_quantile(0.50, sum(rate(thanos_blocks_meta_sync_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) by (le)) * 1",
+          "expr": "histogram_quantile(0.50, sum(rate(thanos_blocks_meta_sync_duration_seconds_bucket{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) by (le)) * 1",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1115,7 +1115,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(thanos_objstore_bucket_operations_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) by (operation)",
+          "expr": "sum(rate(thanos_objstore_bucket_operations_total{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) by (operation)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1211,7 +1211,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(thanos_objstore_bucket_operation_failures_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) / sum(rate(thanos_objstore_bucket_operations_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval]))",
+          "expr": "sum(rate(thanos_objstore_bucket_operation_failures_total{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) / sum(rate(thanos_objstore_bucket_operations_total{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1304,7 +1304,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.99, sum(rate(thanos_objstore_bucket_operation_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) by (job, le)) * 1",
+          "expr": "histogram_quantile(0.99, sum(rate(thanos_objstore_bucket_operation_duration_seconds_bucket{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) by (job, le)) * 1",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1313,7 +1313,7 @@
           "step": 10
         },
         {
-          "expr": "sum(rate(thanos_objstore_bucket_operation_duration_seconds_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) by (job) * 1 / sum(rate(thanos_objstore_bucket_operation_duration_seconds_count{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) by (job)",
+          "expr": "sum(rate(thanos_objstore_bucket_operation_duration_seconds_sum{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) by (job) * 1 / sum(rate(thanos_objstore_bucket_operation_duration_seconds_count{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) by (job)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1322,7 +1322,7 @@
           "step": 10
         },
         {
-          "expr": "histogram_quantile(0.50, sum(rate(thanos_objstore_bucket_operation_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[$interval])) by (job, le)) * 1",
+          "expr": "histogram_quantile(0.50, sum(rate(thanos_objstore_bucket_operation_duration_seconds_bucket{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[$interval])) by (job, le)) * 1",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1425,61 +1425,61 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "go_memstats_alloc_bytes{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}",
+              "expr": "go_memstats_alloc_bytes{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "alloc all - {{kubernetes_namespace}}",
+              "legendFormat": "alloc all - {{namespace}}",
               "legendLink": null,
               "refId": "A",
               "step": 10
             },
             {
-              "expr": "go_memstats_heap_alloc_bytes{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}",
+              "expr": "go_memstats_heap_alloc_bytes{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "alloc heap - {{kubernetes_namespace}}",
+              "legendFormat": "alloc heap - {{namespace}}",
               "legendLink": null,
               "refId": "B",
               "step": 10
             },
             {
-              "expr": "rate(go_memstats_alloc_bytes_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[30s])",
+              "expr": "rate(go_memstats_alloc_bytes_total{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[30s])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "alloc rate all - {{kubernetes_namespace}}",
+              "legendFormat": "alloc rate all - {{namespace}}",
               "legendLink": null,
               "refId": "C",
               "step": 10
             },
             {
-              "expr": "rate(go_memstats_heap_alloc_bytes{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[30s])",
+              "expr": "rate(go_memstats_heap_alloc_bytes{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}[30s])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "alloc rate heap - {{kubernetes_namespace}}",
+              "legendFormat": "alloc rate heap - {{namespace}}",
               "legendLink": null,
               "refId": "D",
               "step": 10
             },
             {
-              "expr": "go_memstats_stack_inuse_bytes{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}",
+              "expr": "go_memstats_stack_inuse_bytes{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "inuse stack - {{kubernetes_namespace}}",
+              "legendFormat": "inuse stack - {{namespace}}",
               "legendLink": null,
               "refId": "E",
               "step": 10
             },
             {
-              "expr": "go_memstats_heap_inuse_bytes{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}",
+              "expr": "go_memstats_heap_inuse_bytes{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "inuse heap - {{kubernetes_namespace}}",
+              "legendFormat": "inuse heap - {{namespace}}",
               "legendLink": null,
               "refId": "F",
               "step": 10
@@ -1568,11 +1568,11 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "go_goroutines{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}",
+              "expr": "go_goroutines{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "{{kubernetes_pod_name}}",
+              "legendFormat": "{{pod}}",
               "legendLink": null,
               "refId": "A",
               "step": 10
@@ -1661,11 +1661,11 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "go_gc_duration_seconds{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}",
+              "expr": "go_gc_duration_seconds{namespace=\"$namespace\",job=~\"$job\",pod=~\"$pod\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "{{quantile}} - {{kubernetes_pod_name}}",
+              "legendFormat": "{{quantile}} - {{pod}}",
               "legendLink": null,
               "refId": "A",
               "step": 10
@@ -1794,7 +1794,7 @@
           "value": "$__all"
         },
         "datasource": "$datasource",
-        "definition": "label_values(kube_pod_info{kubernetes_namespace=\"$namespace\",created_by_name=~\"thanos-compact.*\"}, pod)",
+        "definition": "label_values(kube_pod_info{namespace=\"$namespace\",created_by_name=~\"thanos-compact.*\"}, pod)",
         "hide": 0,
         "includeAll": true,
         "index": -1,
@@ -1802,7 +1802,7 @@
         "multi": false,
         "name": "pod",
         "options": [],
-        "query": "label_values(kube_pod_info{kubernetes_namespace=\"$namespace\",created_by_name=~\"thanos-compact.*\"}, pod)",
+        "query": "label_values(kube_pod_info{namespace=\"$namespace\",created_by_name=~\"thanos-compact.*\"}, pod)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
