@@ -1,0 +1,3519 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "thanos",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": false,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 9,
+  "iteration": 1588861778238,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 34,
+      "panels": [],
+      "repeat": null,
+      "title": "gRPC (Unary)",
+      "type": "row"
+    },
+    {
+      "aliasColors": {
+        "Aborted": "#EAB839",
+        "AlreadyExists": "#7EB26D",
+        "Canceled": "#E24D42",
+        "DataLoss": "#E24D42",
+        "DeadlineExceeded": "#E24D42",
+        "FailedPrecondition": "#6ED0E0",
+        "Internal": "#E24D42",
+        "InvalidArgument": "#EF843C",
+        "NotFound": "#EF843C",
+        "OK": "#7EB26D",
+        "OutOfRange": "#E24D42",
+        "PermissionDenied": "#EF843C",
+        "ResourceExhausted": "#E24D42",
+        "Unauthenticated": "#EF843C",
+        "Unavailable": "#E24D42",
+        "Unimplemented": "#6ED0E0",
+        "Unknown": "#E24D42",
+        "error": "#E24D42"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows rate of handled Unary gRPC requests from queriers.",
+      "fill": 10,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 1,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(grpc_server_handled_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"unary\"}[$interval])) by (grpc_code)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{grpc_code}}",
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "error": "#E24D42"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows ratio of errors compared to the total number of handled requests from queriers.",
+      "fill": 10,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(grpc_server_handled_total{grpc_code=~\"Unknown|ResourceExhausted|Internal|Unavailable\",kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"unary\"}[$interval])) / sum(rate(grpc_server_started_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"unary\"}[$interval]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "error",
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Errors",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows how long has it taken to handle requests from queriers, in quantiles.",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 3,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(grpc_server_handling_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"unary\"}[$interval])) by (le)) * 1",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "P99",
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
+        },
+        {
+          "expr": "sum(rate(grpc_server_handling_seconds_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"unary\"}[$interval])) * 1\n/\nsum(rate(grpc_server_handling_seconds_count{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"unary\"}[$interval]))\n",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "mean",
+          "legendLink": null,
+          "refId": "B",
+          "step": 10
+        },
+        {
+          "expr": "histogram_quantile(0.50, sum(rate(grpc_server_handling_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"unary\"}[$interval])) by (le)) * 1",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "P50",
+          "legendLink": null,
+          "refId": "C",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Duration",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "id": 35,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$datasource",
+          "description": "Shows rate of handled Unary gRPC requests from queriers.",
+          "fill": 10,
+          "gridPos": {
+            "h": 7,
+            "w": 8,
+            "x": 0,
+            "y": 9
+          },
+          "id": 4,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 0,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(rate(grpc_server_handled_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"unary\"}[$interval])) by (job, grpc_method, grpc_code)",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{grpc_method}} - {{grpc_code}}",
+              "refId": "A",
+              "step": 10
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Rate",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$datasource",
+          "description": "Shows ratio of errors compared to the total number of handled requests from queriers.",
+          "fill": 10,
+          "gridPos": {
+            "h": 7,
+            "w": 8,
+            "x": 8,
+            "y": 9
+          },
+          "id": 5,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 0,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(rate(grpc_server_handled_total{grpc_code!=\"OK\",namespace=\"$namespace\",job=~\"$job\",grpc_type=\"unary\"}[$interval])) by (job, grpc_method, grpc_code)\n",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{grpc_method}} - {{grpc_code}}",
+              "legendLink": null,
+              "step": 10
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Errors",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$datasource",
+          "description": "Shows how long has it taken to handle requests from queriers, in quantiles.",
+          "fill": 1,
+          "gridPos": {
+            "h": 7,
+            "w": 8,
+            "x": 16,
+            "y": 9
+          },
+          "id": 6,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "histogram_quantile(0.99, sum(rate(grpc_server_handling_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"unary\"}[$interval])) by (job, grpc_method, le)) * 1",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "P99 - {{grpc_method}}",
+              "legendLink": null,
+              "step": 10
+            },
+            {
+              "expr": "sum(rate(grpc_server_handling_seconds_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"unary\"}[$interval])) by (job) * 1\n/\nsum(rate(grpc_server_handling_seconds_count{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"unary\"}[$interval])) by (job)\n",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "mean - {{grpc_method}}",
+              "legendLink": null,
+              "step": 10
+            },
+            {
+              "expr": "histogram_quantile(0.50, sum(rate(grpc_server_handling_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"unary\"}[$interval])) by (job, grpc_method, le)) * 1",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "P50 - {{grpc_method}}",
+              "legendLink": null,
+              "step": 10
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Duration",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "title": "Detailed",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 36,
+      "panels": [],
+      "repeat": null,
+      "title": "gRPC (Stream)",
+      "type": "row"
+    },
+    {
+      "aliasColors": {
+        "Aborted": "#EAB839",
+        "AlreadyExists": "#7EB26D",
+        "Canceled": "#E24D42",
+        "DataLoss": "#E24D42",
+        "DeadlineExceeded": "#E24D42",
+        "FailedPrecondition": "#6ED0E0",
+        "Internal": "#E24D42",
+        "InvalidArgument": "#EF843C",
+        "NotFound": "#EF843C",
+        "OK": "#7EB26D",
+        "OutOfRange": "#E24D42",
+        "PermissionDenied": "#EF843C",
+        "ResourceExhausted": "#E24D42",
+        "Unauthenticated": "#EF843C",
+        "Unavailable": "#E24D42",
+        "Unimplemented": "#6ED0E0",
+        "Unknown": "#E24D42",
+        "error": "#E24D42"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows rate of handled Streamed gRPC requests from queriers.",
+      "fill": 10,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 10
+      },
+      "hiddenSeries": false,
+      "id": 7,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(grpc_server_handled_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"server_stream\"}[$interval])) by (job, grpc_code)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{grpc_code}}",
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "error": "#E24D42"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows ratio of errors compared to the total number of handled requests from queriers.",
+      "fill": 10,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 10
+      },
+      "hiddenSeries": false,
+      "id": 8,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(grpc_server_handled_total{grpc_code=~\"Unknown|ResourceExhausted|Internal|Unavailable\",kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"server_stream\"}[$interval])) / sum(rate(grpc_server_started_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"server_stream\"}[$interval]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "error",
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Errors",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows how long has it taken to handle requests from queriers, in quantiles.",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 10
+      },
+      "hiddenSeries": false,
+      "id": 9,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(grpc_server_handling_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"server_stream\"}[$interval])) by (job, le)) * 1",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P99",
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
+        },
+        {
+          "expr": "sum(rate(grpc_server_handling_seconds_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"server_stream\"}[$interval])) by (job) * 1\n/\nsum(rate(grpc_server_handling_seconds_count{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"server_stream\"}[$interval])) by (job)\n",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "mean",
+          "legendLink": null,
+          "refId": "B",
+          "step": 10
+        },
+        {
+          "expr": "histogram_quantile(0.50, sum(rate(grpc_server_handling_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"server_stream\"}[$interval])) by (job, le)) * 1",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P50",
+          "legendLink": null,
+          "refId": "C",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Duration",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 37,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$datasource",
+          "description": "Shows rate of handled Streamed gRPC requests from queriers.",
+          "fill": 10,
+          "gridPos": {
+            "h": 7,
+            "w": 8,
+            "x": 0,
+            "y": 18
+          },
+          "id": 10,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 0,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(rate(grpc_server_handled_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"server_stream\"}[$interval])) by (job, grpc_method, grpc_code)",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{grpc_method}} - {{grpc_code}}",
+              "refId": "A",
+              "step": 10
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Rate",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$datasource",
+          "description": "Shows ratio of errors compared to the total number of handled requests from queriers.",
+          "fill": 10,
+          "gridPos": {
+            "h": 7,
+            "w": 8,
+            "x": 8,
+            "y": 18
+          },
+          "id": 11,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 0,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(rate(grpc_server_handled_total{grpc_code!=\"OK\",namespace=\"$namespace\",job=~\"$job\",grpc_type=\"server_stream\"}[$interval])) by (job, grpc_method, grpc_code)\n",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{grpc_method}} - {{grpc_code}}",
+              "legendLink": null,
+              "step": 10
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Errors",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$datasource",
+          "description": "Shows how long has it taken to handle requests from queriers, in quantiles.",
+          "fill": 1,
+          "gridPos": {
+            "h": 7,
+            "w": 8,
+            "x": 16,
+            "y": 18
+          },
+          "id": 12,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "histogram_quantile(0.99, sum(rate(grpc_server_handling_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"server_stream\"}[$interval])) by (job, grpc_method, le)) * 1",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "P99 - {{grpc_method}}",
+              "legendLink": null,
+              "step": 10
+            },
+            {
+              "expr": "sum(rate(grpc_server_handling_seconds_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"server_stream\"}[$interval])) by (job) * 1\n/\nsum(rate(grpc_server_handling_seconds_count{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"server_stream\"}[$interval])) by (job)\n",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "mean - {{grpc_method}}",
+              "legendLink": null,
+              "step": 10
+            },
+            {
+              "expr": "histogram_quantile(0.50, sum(rate(grpc_server_handling_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\",grpc_type=\"server_stream\"}[$interval])) by (job, grpc_method, le)) * 1",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "P50 - {{grpc_method}}",
+              "legendLink": null,
+              "step": 10
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Duration",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "title": "Detailed",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 38,
+      "panels": [],
+      "repeat": null,
+      "title": "Bucket Operations",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows rate of execution for operations against the bucket.",
+      "fill": 10,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 19
+      },
+      "hiddenSeries": false,
+      "id": 13,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(thanos_objstore_bucket_operations_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, operation)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{operation}}",
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "error": "#E24D42"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows ratio of errors compared to the total number of executed operations against the bucket.",
+      "fill": 10,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 19
+      },
+      "hiddenSeries": false,
+      "id": 14,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(thanos_objstore_bucket_operation_failures_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) / sum(rate(thanos_objstore_bucket_operations_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "error",
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Errors",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows how long has it taken to execute operations against the bucket, in quantiles.",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 19
+      },
+      "hiddenSeries": false,
+      "id": 15,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(thanos_objstore_bucket_operation_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, le)) * 1",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P99",
+          "refId": "A",
+          "step": 10
+        },
+        {
+          "expr": "sum(rate(thanos_objstore_bucket_operation_duration_seconds_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job) * 1 / sum(rate(thanos_objstore_bucket_operation_duration_seconds_count{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "mean",
+          "refId": "B",
+          "step": 10
+        },
+        {
+          "expr": "histogram_quantile(0.50, sum(rate(thanos_objstore_bucket_operation_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, le)) * 1",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P50",
+          "refId": "C",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Duration",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 26
+      },
+      "id": 39,
+      "panels": [],
+      "repeat": null,
+      "title": "Block Operations",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows rate of block loads from the bucket.",
+      "fill": 10,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 0,
+        "y": 27
+      },
+      "hiddenSeries": false,
+      "id": 16,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(thanos_bucket_store_block_loads_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "block loads",
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Block Load Rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "error": "#E24D42"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows ratio of errors compared to the total number of block loads from the bucket.",
+      "fill": 10,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 6,
+        "y": 27
+      },
+      "hiddenSeries": false,
+      "id": 17,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(thanos_bucket_store_block_load_failures_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) / sum(rate(thanos_bucket_store_block_loads_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "error",
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Block Load Errors",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows rate of block drops.",
+      "fill": 10,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 12,
+        "y": 27
+      },
+      "hiddenSeries": false,
+      "id": 18,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(thanos_bucket_store_block_drops_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, operation)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "block drops",
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Block Drop Rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "error": "#E24D42"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows ratio of errors compared to the total number of block drops.",
+      "fill": 10,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 18,
+        "y": 27
+      },
+      "hiddenSeries": false,
+      "id": 19,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(thanos_bucket_store_block_drop_failures_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) / sum(rate(thanos_bucket_store_block_drops_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "error",
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Block Drop Errors",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 34
+      },
+      "id": 40,
+      "panels": [],
+      "repeat": null,
+      "title": "Cache Operations",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Show rate of cache requests.",
+      "fill": 10,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 0,
+        "y": 35
+      },
+      "id": 20,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(thanos_store_index_cache_requests_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, item_type)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{item_type}}",
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Requests",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows ratio of errors compared to the total number of cache hits.",
+      "fill": 10,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 6,
+        "y": 35
+      },
+      "id": 21,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(thanos_store_index_cache_hits_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, item_type)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{item_type}}",
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Hits",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Show rate of added items to cache.",
+      "fill": 10,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 12,
+        "y": 35
+      },
+      "id": 22,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(thanos_store_index_cache_items_added_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, item_type)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{item_type}}",
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Added",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Show rate of evicted items from cache.",
+      "fill": 10,
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 18,
+        "y": 35
+      },
+      "id": 23,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(thanos_store_index_cache_items_evicted_total{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, item_type)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{item_type}}",
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Evicted",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 42
+      },
+      "id": 41,
+      "panels": [],
+      "repeat": null,
+      "title": "Store Sent",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows size of chunks that have sent to the bucket.",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 43
+      },
+      "id": 24,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(thanos_bucket_store_sent_chunk_size_bytes_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, le))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P99",
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
+        },
+        {
+          "expr": "sum(rate(thanos_bucket_store_sent_chunk_size_bytes_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job) / sum(rate(thanos_bucket_store_sent_chunk_size_bytes_count{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "mean",
+          "legendLink": null,
+          "refId": "B",
+          "step": 10
+        },
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(thanos_bucket_store_sent_chunk_size_bytes_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, le))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P50",
+          "legendLink": null,
+          "refId": "C",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Chunk Size",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 50
+      },
+      "id": 42,
+      "panels": [],
+      "repeat": null,
+      "title": "Series Operations",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 51
+      },
+      "id": 25,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "thanos_bucket_store_series_blocks_queried{kubernetes_namespace=\"$namespace\",job=~\"$job\",quantile=\"0.99\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P99",
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
+        },
+        {
+          "expr": "sum(rate(thanos_bucket_store_series_blocks_queried_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job) / sum(rate(thanos_bucket_store_series_blocks_queried_count{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "mean",
+          "legendLink": null,
+          "refId": "B",
+          "step": 10
+        },
+        {
+          "expr": "thanos_bucket_store_series_blocks_queried{kubernetes_namespace=\"$namespace\",job=~\"$job\",quantile=\"0.50\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P50",
+          "legendLink": null,
+          "refId": "C",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Block queried",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Show the size of data fetched",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 51
+      },
+      "id": 26,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "thanos_bucket_store_series_data_fetched{kubernetes_namespace=\"$namespace\",job=~\"$job\",quantile=\"0.99\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P99",
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
+        },
+        {
+          "expr": "sum(rate(thanos_bucket_store_series_data_fetched_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job) / sum(rate(thanos_bucket_store_series_data_fetched_count{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "mean",
+          "legendLink": null,
+          "refId": "B",
+          "step": 10
+        },
+        {
+          "expr": "thanos_bucket_store_series_data_fetched{kubernetes_namespace=\"$namespace\",job=~\"$job\",quantile=\"0.50\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P50",
+          "legendLink": null,
+          "refId": "C",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Data Fetched",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 51
+      },
+      "id": 27,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "thanos_bucket_store_series_result_series{kubernetes_namespace=\"$namespace\",job=~\"$job\",quantile=\"0.99\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P99",
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
+        },
+        {
+          "expr": "sum(rate(thanos_bucket_store_series_result_series_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job) / sum(rate(thanos_bucket_store_series_result_series_count{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "mean",
+          "legendLink": null,
+          "refId": "B",
+          "step": 10
+        },
+        {
+          "expr": "thanos_bucket_store_series_result_series{kubernetes_namespace=\"$namespace\",job=~\"$job\",quantile=\"0.50\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P50",
+          "legendLink": null,
+          "refId": "C",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Result series",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 58
+      },
+      "id": 43,
+      "panels": [],
+      "repeat": null,
+      "title": "Series Operation Durations",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows how long has it taken to get all series.",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 59
+      },
+      "id": 28,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(thanos_bucket_store_series_get_all_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, le)) * 1",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P99",
+          "refId": "A",
+          "step": 10
+        },
+        {
+          "expr": "sum(rate(thanos_bucket_store_series_get_all_duration_seconds_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job) * 1 / sum(rate(thanos_bucket_store_series_get_all_duration_seconds_count{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "mean",
+          "refId": "B",
+          "step": 10
+        },
+        {
+          "expr": "histogram_quantile(0.50, sum(rate(thanos_bucket_store_series_get_all_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, le)) * 1",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P50",
+          "refId": "C",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Get All",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows how long has it taken to merge series.",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 59
+      },
+      "id": 29,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(thanos_bucket_store_series_merge_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, le)) * 1",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P99",
+          "refId": "A",
+          "step": 10
+        },
+        {
+          "expr": "sum(rate(thanos_bucket_store_series_merge_duration_seconds_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job) * 1 / sum(rate(thanos_bucket_store_series_merge_duration_seconds_count{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "mean",
+          "refId": "B",
+          "step": 10
+        },
+        {
+          "expr": "histogram_quantile(0.50, sum(rate(thanos_bucket_store_series_merge_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, le)) * 1",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P50",
+          "refId": "C",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Merge",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "description": "Shows how long has it taken for a series to wait at the gate.",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 59
+      },
+      "id": 30,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(thanos_bucket_store_series_gate_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, le)) * 1",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P99",
+          "refId": "A",
+          "step": 10
+        },
+        {
+          "expr": "sum(rate(thanos_bucket_store_series_gate_duration_seconds_sum{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job) * 1 / sum(rate(thanos_bucket_store_series_gate_duration_seconds_count{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "mean",
+          "refId": "B",
+          "step": 10
+        },
+        {
+          "expr": "histogram_quantile(0.50, sum(rate(thanos_bucket_store_series_gate_duration_seconds_bucket{kubernetes_namespace=\"$namespace\",job=~\"$job\"}[$interval])) by (job, le)) * 1",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "P50",
+          "refId": "C",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Gate",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 66
+      },
+      "id": 44,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$datasource",
+          "fill": 1,
+          "gridPos": {
+            "h": 7,
+            "w": 8,
+            "x": 0,
+            "y": 67
+          },
+          "id": 31,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "go_memstats_alloc_bytes{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "alloc all {{kubernetes_pod_name}}",
+              "legendLink": null,
+              "step": 10
+            },
+            {
+              "expr": "go_memstats_heap_alloc_bytes{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "alloc heap {{kubernetes_pod_name}}",
+              "legendLink": null,
+              "step": 10
+            },
+            {
+              "expr": "rate(go_memstats_alloc_bytes_total{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[30s])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "alloc rate all {{kubernetes_pod_name}}",
+              "legendLink": null,
+              "step": 10
+            },
+            {
+              "expr": "rate(go_memstats_heap_alloc_bytes{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}[30s])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "alloc rate heap {{kubernetes_pod_name}}",
+              "legendLink": null,
+              "step": 10
+            },
+            {
+              "expr": "go_memstats_stack_inuse_bytes{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "inuse stack {{kubernetes_pod_name}}",
+              "legendLink": null,
+              "step": 10
+            },
+            {
+              "expr": "go_memstats_heap_inuse_bytes{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "inuse heap {{kubernetes_pod_name}}",
+              "legendLink": null,
+              "step": 10
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Memory Used",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$datasource",
+          "fill": 1,
+          "gridPos": {
+            "h": 7,
+            "w": 8,
+            "x": 8,
+            "y": 67
+          },
+          "id": 32,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "go_goroutines{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{kubernetes_pod_name}}",
+              "legendLink": null,
+              "step": 10
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Goroutines",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$datasource",
+          "fill": 1,
+          "gridPos": {
+            "h": 7,
+            "w": 8,
+            "x": 16,
+            "y": 67
+          },
+          "id": 33,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "go_gc_duration_seconds{kubernetes_namespace=\"$namespace\",job=~\"$job\",kubernetes_pod_name=~\"$pod\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "{{quantile}} - {{kubernetes_pod_name}}",
+              "legendLink": null,
+              "step": 10
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "GC Time Quantiles",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "title": "Resources",
+      "type": "row"
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 22,
+  "style": "dark",
+  "tags": [
+    "monitoring",
+    "thanos"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "tags": [],
+          "text": "thanos",
+          "value": "thanos"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "monitoring",
+          "value": "monitoring"
+        },
+        "hide": 2,
+        "label": "namespace",
+        "name": "namespace",
+        "options": [
+          {
+            "selected": true,
+            "text": "monitoring",
+            "value": "monitoring"
+          }
+        ],
+        "query": "monitoring",
+        "skipUrlSync": false,
+        "type": "constant"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "kubernetes-pods",
+          "value": "kubernetes-pods"
+        },
+        "hide": 2,
+        "label": "job",
+        "name": "job",
+        "options": [
+          {
+            "selected": true,
+            "text": "kubernetes-pods",
+            "value": "kubernetes-pods"
+          }
+        ],
+        "query": "kubernetes-pods",
+        "skipUrlSync": false,
+        "type": "constant"
+      },
+      {
+        "allValue": ".*.thanos-storegateway.*",
+        "current": {
+          "selected": false,
+          "tags": [],
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "$datasource",
+        "definition": "label_values(kube_pod_info{kubernetes_namespace=\"monitoring\",created_by_name=~\".*.thanos-storegateway.*\"}, pod)",
+        "hide": 0,
+        "includeAll": true,
+        "index": -1,
+        "label": "pod",
+        "multi": false,
+        "name": "pod",
+        "options": [],
+        "query": "label_values(kube_pod_info{kubernetes_namespace=\"monitoring\",created_by_name=~\".*.thanos-storegateway.*\"}, pod)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 2,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "auto": true,
+        "auto_count": 300,
+        "auto_min": "10s",
+        "current": {
+          "selected": false,
+          "text": "5m",
+          "value": "5m"
+        },
+        "hide": 0,
+        "label": "interval",
+        "name": "interval",
+        "options": [
+          {
+            "selected": false,
+            "text": "auto",
+            "value": "$__auto_interval_interval"
+          },
+          {
+            "selected": true,
+            "text": "5m",
+            "value": "5m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          }
+        ],
+        "query": "5m,10m,30m,1h,6h,12h",
+        "refresh": 2,
+        "skipUrlSync": false,
+        "type": "interval"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Thanos - Store Gateway",
+  "uid": "thanos-store-gateway",
+  "variables": {
+    "list": []
+  },
+  "version": 2
+}

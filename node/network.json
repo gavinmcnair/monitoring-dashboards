@@ -1,0 +1,7032 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": false,
+  "gnetId": 1860,
+  "graphTooltip": 0,
+  "id": 434,
+  "iteration": 1567792955630,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {
+        "receive_packets_eth0": "#7EB26D",
+        "receive_packets_lo": "#E24D42",
+        "transmit_packets_eth0": "#7EB26D",
+        "transmit_packets_lo": "#E24D42"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 60,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Trans.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*lo.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*eth0.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*eth1.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*eth2.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*eth3.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*eth4.*/",
+          "color": "#1F78C1"
+        },
+        {
+          "alias": "/.*eth5.*/",
+          "color": "#BA43A9"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_network_receive_packets_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Receive",
+          "refId": "O",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_network_transmit_packets_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Transmit",
+          "refId": "P",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Network Traffic by Packets",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "pps",
+          "label": "Packets out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 142,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Trans.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*lo.*.errors.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*eth0.*.errors.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*eth1.*.errors.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*eth2.*.errors.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*eth3.*.errors.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*eth4.*.errors.*/",
+          "color": "#1F78C1"
+        },
+        {
+          "alias": "/.*eth5.*.errors.*/",
+          "color": "#BA43A9"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_network_receive_errs_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Receive errors",
+          "refId": "E",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_network_transmit_errs_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Rransmit errors",
+          "refId": "F",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Network Traffic Errors",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "pps",
+          "label": "Packets out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 143,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Trans.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*lo.*.drop.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*eth0.*.drop.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*eth1.*.drop.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*eth2.*.drop.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*eth3.*.drop.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*eth4.*.drop.*/",
+          "color": "#1F78C1"
+        },
+        {
+          "alias": "/.*eth5.*.drop.*/",
+          "color": "#BA43A9"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_network_receive_drop_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Receive drop",
+          "refId": "G",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_network_transmit_drop_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Transmit drop",
+          "refId": "H",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Network Traffic Drop",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "pps",
+          "label": "Packets out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 141,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Trans.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*lo.*.compressed.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*eth0.*.compressed.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*eth1.*.compressed.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*eth2.*.compressed.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*eth3.*.compressed.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*eth4.*.compressed.*/",
+          "color": "#1F78C1"
+        },
+        {
+          "alias": "/.*eth5.*.compressed.*/",
+          "color": "#BA43A9"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_network_receive_compressed_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Receive compressed",
+          "refId": "C",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_network_transmit_compressed_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Transmit compressed",
+          "refId": "D",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Network Traffic Compressed",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "pps",
+          "label": "Packets out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 20
+      },
+      "id": 146,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Trans.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*lo.*.multicast.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*eth0.*.multicast.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*eth1.*.multicast.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*eth2.*.multicast.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*eth3.*.multicast.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*eth4.*.multicast.*/",
+          "color": "#1F78C1"
+        },
+        {
+          "alias": "/.*eth5.*.multicast.*/",
+          "color": "#BA43A9"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_network_receive_multicast_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Receive multicast",
+          "refId": "M",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Network Traffic Multicast",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "pps",
+          "label": "Packets out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 20
+      },
+      "id": 144,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Trans.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*lo.*.fifo.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*eth0.*.fifo.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*eth1.*.fifo.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*eth2.*.fifo.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*eth3.*.fifo.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*eth4.*.fifo.*/",
+          "color": "#1F78C1"
+        },
+        {
+          "alias": "/.*eth5.*.fifo.*/",
+          "color": "#BA43A9"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_network_receive_fifo_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Receive fifo",
+          "refId": "I",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_network_transmit_fifo_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Transmit fifo",
+          "refId": "J",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Network Traffic Fifo",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "pps",
+          "label": "Packets out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 30
+      },
+      "id": 145,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Trans.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*lo.*.frame.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*eth0.*.frame.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*eth1.*.frame.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*eth2.*.frame.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*eth3.*.frame.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*eth4.*.frame.*/",
+          "color": "#1F78C1"
+        },
+        {
+          "alias": "/.*eth5.*.frame.*/",
+          "color": "#BA43A9"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_network_receive_frame_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Receive frame",
+          "refId": "K",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Network Traffic Frame",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "pps",
+          "label": "Packets out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 30
+      },
+      "id": 231,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Trans.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*lo.*.carrier.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*eth0.*.carrier.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*eth1.*.carrier.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*eth2.*.carrier.*/",
+          "color": "#EF843C"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_network_transmit_carrier_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Statistic transmit_carrier",
+          "refId": "C",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Network Traffic Carrier",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 40
+      },
+      "id": 232,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Trans.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*lo.*.carrier.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*eth0.*.carrier.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*eth1.*.carrier.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*eth2.*.carrier.*/",
+          "color": "#EF843C"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_network_transmit_colls_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Transmit colls",
+          "refId": "C",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Network Traffic Colls",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 40
+      },
+      "id": 61,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "NF conntrack limit",
+          "color": "#890F02",
+          "fill": 0
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_nf_conntrack_entries{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "NF conntrack entries",
+          "refId": "O",
+          "step": 4
+        },
+        {
+          "expr": "node_nf_conntrack_entries_limit{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "NF conntrack limit",
+          "refId": "P",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "NF Contrack",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Entries",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 50
+      },
+      "id": 230,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_arp_entries{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{ device }} - ARP entries",
+          "refId": "O",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "ARP Entries",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Entries",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 50
+      },
+      "id": 124,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_sockstat_UDPLITE_inuse{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "UDPLITE_inuse - Udplite sockets currently in use",
+          "refId": "J",
+          "step": 240
+        },
+        {
+          "expr": "node_sockstat_UDP_inuse{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "UDP_inuse - Udp sockets currently in use",
+          "refId": "K",
+          "step": 240
+        },
+        {
+          "expr": "node_sockstat_UDP_mem{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "UDP_mem - Used memory for udp",
+          "refId": "L",
+          "step": 240
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Sockstat UDP",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Sockets",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 60
+      },
+      "id": 63,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_sockstat_TCP_alloc{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCP_alloc - Allocated sockets",
+          "refId": "D",
+          "step": 240
+        },
+        {
+          "expr": "node_sockstat_TCP_inuse{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCP_inuse - Tcp sockets currently in use",
+          "refId": "E",
+          "step": 240
+        },
+        {
+          "expr": "node_sockstat_TCP_mem{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCP_mem - Used memory for tcp",
+          "refId": "F",
+          "step": 240
+        },
+        {
+          "expr": "node_sockstat_TCP_orphan{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCP_orphan - Orphan sockets",
+          "refId": "H",
+          "step": 240
+        },
+        {
+          "expr": "node_sockstat_TCP_tw{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCP_tw - Sockets wating close",
+          "refId": "I",
+          "step": 240
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Sockstat TCP",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Sockets",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 60
+      },
+      "id": 220,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_sockstat_TCP_mem_bytes{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCP_mem_bytes - ",
+          "refId": "G",
+          "step": 240
+        },
+        {
+          "expr": "node_sockstat_UDP_mem_bytes{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "UDP_mem_bytes - ",
+          "refId": "A",
+          "step": 240
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Sockstat Memory Size",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": "Bytes",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 70
+      },
+      "id": 126,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_sockstat_sockets_used{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Sockets_used - Sockets currently in use",
+          "refId": "N",
+          "step": 240
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Sockstat Used",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Sockets",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 70
+      },
+      "height": "",
+      "id": 221,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Out.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*Octets.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*McastPkts.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*McastOctets.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*BcastPkts.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*BcastOctets.*/",
+          "color": "#E24D42"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_IpExt_InOctets{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InOctets - Received octets",
+          "refId": "K",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_IpExt_OutOctets{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutOctets - Sent octets",
+          "refId": "Q",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Netstat IP In / Out Octets",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Octects out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 80
+      },
+      "id": 125,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_sockstat_FRAG_inuse{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "FRAG_inuse - Frag sockets currently in use",
+          "refId": "A",
+          "step": 240
+        },
+        {
+          "expr": "node_sockstat_FRAG_memory{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "FRAG_memory - Used memory for frag",
+          "refId": "B",
+          "step": 240
+        },
+        {
+          "expr": "node_sockstat_RAW_inuse{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "RAW_inuse - Raw sockets currently in use",
+          "refId": "C",
+          "step": 240
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Sockstat FRAG / RAW",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Sockets",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 80
+      },
+      "height": "",
+      "id": 85,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*MaxConn *./",
+          "color": "#890F02",
+          "fill": 0
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_netstat_Tcp_CurrEstab{instance=~\"$name\"}",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "CurrEstab - TCP connections for which the current state is either ESTABLISHED or CLOSE- WAIT",
+          "refId": "C",
+          "step": 4
+        },
+        {
+          "expr": "node_netstat_Tcp_MaxConn{instance=~\"$name\"}",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "MaxConn - Limit on the total number of TCP connections the entity can support (Dinamic is \"-1\")",
+          "refId": "H",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Connections",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Connections",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 90
+      },
+      "height": "",
+      "id": 49,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Out.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*Discards.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*NoRoutes.*/",
+          "color": "#EAB839"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_network_receive_packets_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "InReceives - IP inreceives",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_network_transmit_packets_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "OutRequests - IP outrequests",
+          "refId": "P",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Netstat IP In / Out",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Datagrams out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 90
+      },
+      "height": "",
+      "id": 82,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_Tcp_ActiveOpens{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "ActiveOpens - TCP connections that have made a direct transition to the SYN-SENT state from the CLOSED state",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Tcp_AttemptFails{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "AttemptFails - TCP connections that have made a direct transition to the CLOSED state from either the SYN-SENT and SYN-RCVD",
+          "refId": "B",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Tcp_EstabResets{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "EstabResets - TCP connections that have made a direct transition to the CLOSED state from either the ESTABLISHED state or the CLOSE-WAIT state",
+          "refId": "D",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Tcp_PassiveOpens{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "PassiveOpens - TCP connections that have made a direct transition to the SYN-RCVD state from the LISTEN state",
+          "refId": "K",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Direct Transition",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Connections",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 100
+      },
+      "height": "",
+      "id": 81,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 300,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_Ip_ForwDatagrams{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "ForwDatagrams - IP outforwdatagrams",
+          "refId": "C",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Ip_Forwarding{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Forwarding - IP forwarding",
+          "refId": "D",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Netstat IP Forwarding",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Datagrams",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 100
+      },
+      "height": "",
+      "id": 92,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_DelayedACKLocked{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "DelayedACKLocked - Delayed acks further delayed because of locked socket",
+          "refId": "C",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_DelayedACKLost{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "DelayedACKLost - Times quick ack mode was activated",
+          "refId": "D",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_DelayedACKs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "DelayedACKs - Delayed acks sent",
+          "refId": "E",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Delayed ACK",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 110
+      },
+      "height": "",
+      "id": 52,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Out.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*InSegs.*/",
+          "color": "#CCA300"
+        },
+        {
+          "alias": "/.*OutSegs.*/",
+          "color": "#CCA300"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_Tcp_InCsumErrors{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "InCsumErrors - Segments received with checksum errors",
+          "refId": "E",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Tcp_InErrs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "InErrs - Segments received in error (e.g., bad TCP checksums)",
+          "refId": "F",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Tcp_InSegs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "InSegs - Segments received, including those received in error. This count includes segments received on currently established connections",
+          "refId": "G",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Tcp_OutRsts{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "OutRsts - Segments sent containing the RST flag",
+          "refId": "I",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Tcp_OutSegs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "OutSegs - Segments sent, including those on current connections but excluding those containing only retransmitted octets",
+          "refId": "J",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Tcp_RetransSegs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "RetransSegs - Segments retransmitted - that is, the number of TCP segments transmitted containing one or more previously transmitted octets",
+          "refId": "A",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Segments",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Segments out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 110
+      },
+      "height": "",
+      "id": 90,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPLossFailures{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPLossFailures - Timeouts in loss state",
+          "refId": "C",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPLossProbeRecovery{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPLossProbeRecovery - TCP loss probe recoveries",
+          "refId": "D",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPLossProbes{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPLossProbes - Sent TCP loss probes",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPLossUndo{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPLossUndo - Congestion windows recovered without slow start after partial ack",
+          "refId": "B",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPLostRetransmit{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPLostRetransmit - Retransmits lost",
+          "refId": "E",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP LOSS",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 120
+      },
+      "height": "",
+      "id": 86,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(node_netstat_Tcp_RetransSegs{instance=~\"$name\"}[1m])",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "intervalFactor": 1,
+          "legendFormat": "Retransmission Segments",
+          "refId": "M",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Retransmissions",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "pps",
+          "label": "Milliseconds",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 120
+      },
+      "height": "",
+      "id": 101,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPForwardRetrans{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPForwardRetrans - Packets losts retransmitted with Forward RTO-Recovery",
+          "refId": "O",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSlowStartRetrans{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPSlowStartRetrans - Packets losts retransmitted after a slow start",
+          "refId": "P",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSynRetrans{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPSynRetrans - SYN-SYN/ACK retransmits to break down retransmissions in SYN, fast/timeout retransmits",
+          "refId": "Q",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSpuriousRTOs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPSpuriousRTOs - FRTO's successfully detected spurious RTOs",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSpuriousRtxHostQueues{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPSpuriousRtxHostQueues - Times detected that the fast clone is not yet freed in tcp_transmit_skb()",
+          "refId": "B",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPFullUndo{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPFullUndo - Retransmits that undid the CWND reduction",
+          "refId": "C",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPRetransFail{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPRetransFail - Failed tcp_retransmit_skb() calls",
+          "refId": "D",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPPartialUndo{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPPartialUndo - Congestion windows partially recovered using Hoe heuristic",
+          "refId": "E",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Retrans",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 130
+      },
+      "height": "",
+      "id": 94,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPAbortOnClose{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPAbortOnClose - Connections aborted due to early user close",
+          "refId": "V",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPAbortOnData{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPAbortOnData - Connections aborted due to unexpected data",
+          "refId": "W",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPAbortOnLinger{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPAbortOnLinger - Connections aborted in lingered state after being closed",
+          "refId": "X",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPAbortOnMemory{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPAbortOnMemory - Connections aborted before attached to a socket",
+          "refId": "Y",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPAbortOnTimeout{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPAbortOnTimeout - Connections aborted due timeout",
+          "refId": "B",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPAbortFailed{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPAbortFailed - Connections aborted without send RST due insuffient memory",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPTimeouts{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPTimeouts - Other TCP connections timeouts",
+          "refId": "C",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Aborts / Tiemouts",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Connections",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 130
+      },
+      "height": "",
+      "id": 96,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPDirectCopyFromBacklog{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPDirectCopyFromBacklog - Packets directly received from backlog",
+          "refId": "M",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPDirectCopyFromPrequeue{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPDirectCopyFromPrequeue - Packets directly received from prequeue",
+          "refId": "N",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Direct Copy",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 140
+      },
+      "height": "",
+      "id": 91,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Sent.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "SyncookiesSent - SYN cookies sent",
+          "color": "#E0F9D7"
+        },
+        {
+          "alias": "SyncookiesRecv - SYN cookies received",
+          "color": "#E0F9D7"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_SyncookiesFailed{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "SyncookiesFailed - Invalid SYN cookies received",
+          "refId": "R",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_SyncookiesRecv{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "SyncookiesRecv - SYN cookies received",
+          "refId": "S",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_SyncookiesSent{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "SyncookiesSent - SYN cookies sent",
+          "refId": "T",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSYNChallenge{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "SynChallenge - Challenge ACKs sent in response to SYN packets",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPChallengeACK{instance=~\"$name\"}[5m])",
+          "intervalFactor": 2,
+          "legendFormat": "TCPChallengeACK - Challenge ACKs sent (RFC 5961 3.2)",
+          "refId": "B",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP SynCookie / Challenge",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 140
+      },
+      "height": "",
+      "id": 93,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_PAWSActive{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "PAWSActive - Active connections rejected because of time stamp",
+          "refId": "M",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_PAWSEstab{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "PAWSEstab - Pkts rejects in estab connections because of timestamp",
+          "refId": "N",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_PAWSPassive{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "PAWSPassive - Passive connections rejected because of time stamp",
+          "refId": "O",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP PAWS",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 150
+      },
+      "height": "",
+      "id": 53,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_ListenDrops{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "ListenDrops - SYNs to LISTEN sockets ignored",
+          "refId": "H",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_LockDroppedIcmps{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "LockDroppedIcmps - ICMP packets dropped because socket was locked",
+          "refId": "J",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPDeferAcceptDrop{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPDeferAcceptDrop - Dropped ACK frames received by a socket in SYN_RECV state",
+          "refId": "D",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPBacklogDrop{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPBacklogDrop - Packets dropped bacause the socket's receive queue was full",
+          "refId": "P",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_OutOfWindowIcmps{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutOfWindowIcmps - ICMP packets dropped because they were out-of-window",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPMinTTLDrop{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPMinTTLDrop - TCP packets dropped under minTTL condition",
+          "refId": "B",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP DROPS",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 150
+      },
+      "height": "",
+      "id": 95,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPDSACKIgnoredOld{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPDSACKIgnoredOld - Discarded packets with duplicate SACK while retransmitting",
+          "refId": "F",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPDSACKOfoRecv{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPDSACKOfoRecv - DSACKs for out of order packets received",
+          "refId": "G",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPDSACKOfoSent{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPDSACKOfoSent - DSACKs sent for out of order packets",
+          "refId": "H",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPDSACKOldSent{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPDSACKOldSent - DSACKs sent for old packets",
+          "refId": "I",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPDSACKRecv{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPDSACKRecv - DSACKs received",
+          "refId": "J",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPDSACKUndo{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPDSACKUndo - Discarded packets with erroneous retransmit",
+          "refId": "K",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPDSACKIgnoredNoUndo{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPDSACKIgnoredNoUndo - Discarded packets with duplicate SACK",
+          "refId": "A",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP DSACK",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 160
+      },
+      "height": "",
+      "id": 87,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_PruneCalled{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "PruneCalled - Pkts pruned from recv queue because of soc buf overrun",
+          "refId": "P",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_RcvPruned{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "RcvPruned - Packets pruned from receive queue",
+          "refId": "Q",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_OfoPruned{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OfoPruned - Packets dropped from out-of-order queue because of socket buffer overrun",
+          "refId": "A",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Pruned",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 160
+      },
+      "height": "",
+      "id": 99,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPHPAcks{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPHPAcks - Acknowledgments not containing data received",
+          "refId": "Z",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPHPHits{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPHPHits - Packets header predicted",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPHPHitsToUser{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPHPHitsToUser - Packets header predicted and directly queued to user",
+          "refId": "B",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP HP",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 170
+      },
+      "height": "",
+      "id": 100,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TW{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TW - TCP sockets finished time wait in fast timer",
+          "refId": "O",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TWKilled{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TWKilled - TCP sockets finished time wait in slow timer",
+          "refId": "P",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TWRecycled{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TWRecycled - Time wait sockets recycled by time stamp",
+          "refId": "Q",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPTimeWaitOverflow{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPTimeWaitOverflow - Occurences of time wait bucket overflow",
+          "refId": "A",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP TimeWait",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 170
+      },
+      "height": "",
+      "id": 103,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPFACKReorder{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPFACKReorder - Detected packets with re-ordering using FACK",
+          "refId": "E",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPTSReorder{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPTSReorder - Times detected packets with re-ordering using timestamp option",
+          "refId": "S",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Reorder",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 180
+      },
+      "height": "",
+      "id": 98,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSackRecovery{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPSackRecovery - Times recovered from packet loss by selective acknowledgements",
+          "refId": "E",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSackRecoveryFail{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPSackRecoveryFail - Issue while recovering packets lost using selective ACK",
+          "refId": "F",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSackShiftFallback{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPSackShiftFallback - SACKs fallbacks",
+          "refId": "G",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSackShifted{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPSackShifted - SACKs shifted",
+          "refId": "H",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSACKDiscard{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPSackDiscard -  Discarded due invalid SACK block.",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSackFailures{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPSackFailures - Timeouts after SACK recovery",
+          "refId": "B",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSackMerged{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPSackMerged - SACKs merged",
+          "refId": "C",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSACKReneging{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPSACKReneging - Bad SACK blocks received",
+          "refId": "D",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSACKReorder{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPSACKReorder - Times detected reordering using SACK",
+          "refId": "I",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP SACK",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 180
+      },
+      "height": "",
+      "id": 163,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPReqQFullDoCookies{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPReqQFullDoCookies - Times SYNCOOKIE was replied to client",
+          "refId": "O",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPReqQFullDrop{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPReqQFullDrop - Times SYN request was dropped due to disabled syncookies",
+          "refId": "A",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP ReqQ",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 190
+      },
+      "height": "",
+      "id": 97,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPFastOpenActive{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPFastOpenActive - Successful outbound TFO connections",
+          "refId": "P",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPFastOpenActiveFail{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPFastOpenActiveFail - SYN-ACK packets received that did not acknowledge data sent in the SYN packet and caused a retransmissions without SYN data",
+          "refId": "Q",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPFastOpenCookieReqd{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPFastOpenCookieReqd - Inbound SYN packets requesting TFO with TFO set but no cookie",
+          "refId": "R",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPFastOpenListenOverflow{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPFastOpenListenOverflow - Times the fastopen listen queue overflowed",
+          "refId": "S",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPFastOpenPassive{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPFastOpenPassive - Successful inbound TFO connections",
+          "refId": "T",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPFastOpenPassiveFail{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPFastOpenPassiveFail - Inbound SYN packets with TFO cookie that was invalid",
+          "refId": "U",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPFastRetrans{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPFastRetrans - Packets lost fast-retransmitted",
+          "refId": "V",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP FastOpen / FastRetrans",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 190
+      },
+      "height": "",
+      "id": 165,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPMD5NotFound{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPMD5NotFound - Times MD5 hash expected but not found",
+          "refId": "Z",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPMD5Unexpected{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPMD5Unexpected - Times MD5 hash unexpected but found",
+          "refId": "A",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP MD5",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 200
+      },
+      "height": "",
+      "id": 102,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPToZeroWindowAdv{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPToZeroWindowAdv - Times window went from zero to non-zero",
+          "refId": "V",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPWantZeroWindowAdv{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPWantZeroWindowAdv - Times zero window announced",
+          "refId": "W",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPFromZeroWindowAdv{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPFromZeroWindowAdv - Times window went from zero to non-zero",
+          "refId": "A",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP ZeroWindow",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 200
+      },
+      "height": "",
+      "id": 167,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPRcvCoalesce{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPRcvCoalesce - Times tried to coalesce the receive queue",
+          "refId": "Z",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPRcvCollapsed{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPRcvCollapsed - Packets collapsed in receive queue due to low socket buffer",
+          "refId": "A",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Rcv",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 210
+      },
+      "height": "",
+      "id": 162,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPRenoFailures{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPRenoFailures  - Timeouts after reno fast retransmit",
+          "refId": "O",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPRenoRecovery{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPRenoRecovery - Times recovered from packet loss due to fast retransmit",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPRenoRecoveryFail{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPRenoRecoveryFail - Times reno fast retransmits failed",
+          "refId": "B",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPRenoReorder{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPRenoReorder - Times detected reordering using reno fast retransmit",
+          "refId": "C",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Reno",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 210
+      },
+      "height": "",
+      "id": 109,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Out.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*Snd.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*bufErrors.*/",
+          "color": "#70DBED"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_Udp_InCsumErrors{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InCsumErrors - Datagrams with checksum errors",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Udp_InErrors{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InErrors - Datagrams that could not be delivered to an application",
+          "refId": "C",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Udp_RcvbufErrors{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "RcvbufErrors - Datagrams for which not enough socket buffer memory to receive",
+          "refId": "F",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Udp_SndbufErrors{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "SndbufErrors - Datagrams for which not enough socket buffer memory to transmit",
+          "refId": "G",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Udp_NoPorts{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "NoPorts - Datagrams received on a port with no listener",
+          "refId": "B",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "UDP Errors",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Datagrams out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 220
+      },
+      "height": "",
+      "id": 164,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPOFODrop{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPOFODrop - Packets meant to be queued in OFO but dropped because socket rcvbuf limit reached",
+          "refId": "P",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPOFOMerge{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPOFOMerge - Packets in OFO that were merged with other packets",
+          "refId": "Q",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPOFOQueue{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "TCPOFOQueue - Packets queued in OFO queue",
+          "refId": "B",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Out of order",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 220
+      },
+      "height": "",
+      "id": 110,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Out.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*bufErrors.*/",
+          "color": "#6ED0E0"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_UdpLite_InCsumErrors{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InCsumErrors - Datagrams with checksum errors",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_UdpLite_InErrors{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InErrors - Datagrams that could not be delivered to an application",
+          "refId": "C",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_UdpLite_RcvbufErrors{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "RcvbufErrors - Datagrams for which not enough socket buffer memory to receive",
+          "refId": "F",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_UdpLite_SndbufErrors{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "SndbufErrors - Datagrams for which not enough socket buffer memory to transmit",
+          "refId": "G",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_UdpLite_NoPorts{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "NoPorts - Datagrams received on a port with no listener",
+          "refId": "B",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "UDP Lite Errors",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Datagrams out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 230
+      },
+      "height": "",
+      "id": 166,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPPrequeued{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPPrequeued - Packets directly queued to recvmsg prequeue",
+          "refId": "Z",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPPrequeueDropped{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "TCPPrequeueDropped - Packets dropped from prequeue",
+          "refId": "A",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Prequeued",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 230
+      },
+      "height": "",
+      "id": 147,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Out.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*Type3.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*SrcQuenchs.*/",
+          "color": "#705DA0"
+        },
+        {
+          "alias": "/.*ParmProb.*/",
+          "color": "#70DBED"
+        },
+        {
+          "alias": "/.*TimeExcds.*/",
+          "color": "#EA6460"
+        },
+        {
+          "alias": "/.*DestUnreachs.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*InErrors.*/",
+          "color": "#890F02"
+        },
+        {
+          "alias": "/.*OutErrors.*/",
+          "color": "#890F02"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_Icmp_InCsumErrors{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "InCsumErrors - Messages with ICMP checksum errors",
+          "refId": "E",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_InTimeExcds{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "InTimeExcds - Time Exceeded messages received",
+          "refId": "C",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_OutTimeExcds{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "OutTimeExcds - Time Exceeded messages sent",
+          "refId": "D",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_InParmProbs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "InParmProbs - Parameter Problem messages received",
+          "refId": "F",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_OutParmProbs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "OutParmProb - Parameter Problem messages sent",
+          "refId": "G",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_InSrcQuenchs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "InSrcQuenchs - Source Quench messages received",
+          "refId": "H",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_OutSrcQuenchs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "OutSrcQuenchs - Source Quench messages sent",
+          "refId": "J",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "ICMP Errors 2",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Messages out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 240
+      },
+      "height": "",
+      "id": 104,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_TcpExt_BusyPollRxPackets{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "BusyPollRxPackets - Low latency application-fetched packets",
+          "refId": "B",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_EmbryonicRsts{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "EmbryonicRsts - Resets received for embryonic SYN_RECV sockets",
+          "refId": "F",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_ListenOverflows{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "ListenOverflows - Times the listen queue of a socket overflowed",
+          "refId": "I",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPSchedulerFailed{instance=~\"$name\"}[5m])",
+          "intervalFactor": 2,
+          "legendFormat": "TCPSchedulerFailed - Times receiver scheduled too late for direct processing",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_TcpExt_TCPMemoryPressures{instance=~\"$name\"}[5m])",
+          "intervalFactor": 2,
+          "legendFormat": "TCPMemoryPressures - TCP ran low on memory",
+          "refId": "C",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "TCP Issues",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Counter",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 240
+      },
+      "height": "",
+      "id": 112,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Out.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*TimestampReps.*/",
+          "color": "#F9934E"
+        },
+        {
+          "alias": "/.*Timestamps -.*/",
+          "color": "#6ED0E0"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_Icmp_InTimestampReps{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InTimestampReps - Timestamp Reply messages received",
+          "refId": "O",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_InTimestamps{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InTimestamps - Timestamp (request) messages received",
+          "refId": "P",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_OutTimestampReps{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutTimestampReps - Timestamp Reply messages sent",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_OutTimestamps{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutTimestamps - Timestamp (request) messages sent",
+          "refId": "B",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "ICMP Timestamps",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Messages out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 250
+      },
+      "height": "",
+      "id": 55,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Out.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*Snd.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*Datagrams.*/",
+          "color": "#EAB839"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_Udp_InDatagrams{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InDatagrams - Datagrams received",
+          "refId": "B",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Udp_OutDatagrams{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutDatagrams - Datagrams sent",
+          "refId": "E",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "UDP In / Out",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Datagrams out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 250
+      },
+      "height": "",
+      "id": 113,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Out.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*AddrMaskReps.*/",
+          "color": "#B7DBAB"
+        },
+        {
+          "alias": "/.*Masks -.*/",
+          "color": "#E5AC0E"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_Icmp_InAddrMaskReps{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InAddrMaskReps - Address Mask Reply messages received",
+          "refId": "C",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_InAddrMasks{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InAddrMasks - Address Mask Request messages received",
+          "refId": "D",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_OutAddrMaskReps{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutAddrMaskReps - Address Mask Reply messages sent",
+          "refId": "Q",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_OutAddrMasks{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutAddrMasks - Address Mask Request messages sent",
+          "refId": "R",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "ICMP Masks",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Messages out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 260
+      },
+      "height": "",
+      "id": 57,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Out.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*Datagrams.*/",
+          "color": "#EAB839"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_UdpLite_InDatagrams{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InDatagrams - Packets received",
+          "refId": "B",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_UdpLite_OutDatagrams{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutDatagrams - Packets sent",
+          "refId": "E",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "UDP Lite In / Out",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Datagrams out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 260
+      },
+      "height": "",
+      "id": 114,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Out.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*EchoReps.*/",
+          "color": "#D683CE"
+        },
+        {
+          "alias": "/.*Echos -.*/",
+          "color": "#F9934E"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_Icmp_InEchoReps{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InEchoReps - Echo Reply messages received",
+          "refId": "G",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_InEchos{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InEchos - Echo (request) messages received",
+          "refId": "H",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_OutEchoReps{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutEchoReps - Echo Reply messages sent",
+          "refId": "T",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_OutEchos{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutEchos - Echo (request) messages sent",
+          "refId": "U",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "ICMP Echos",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Messages out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 270
+      },
+      "height": "",
+      "id": 115,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Out.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*Msgs.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*Redirects.*/",
+          "color": "#F9BA8F"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_Icmp_InMsgs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InMsgs -  Messages which the entity received. Note that this counter includes all those counted by icmpInErrors",
+          "refId": "J",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_InRedirects{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InRedirects - Redirect messages received",
+          "refId": "L",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_OutMsgs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutMsgs - Messages which this entity attempted to send. Note that this counter includes all those counted by icmpOutErrors",
+          "refId": "W",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_OutRedirects{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutRedirects -  Redirect messages sent. For a host, this object will always be zero, since hosts do not send redirects",
+          "refId": "Y",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "ICMP In / Out - Messages / Redirects",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Messages out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 270
+      },
+      "height": "",
+      "id": 50,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 12,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Out.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*Type3.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*SrcQuenchs.*/",
+          "color": "#705DA0"
+        },
+        {
+          "alias": "/.*ParmProb.*/",
+          "color": "#70DBED"
+        },
+        {
+          "alias": "/.*TimeExcds.*/",
+          "color": "#EA6460"
+        },
+        {
+          "alias": "/.*DestUnreachs.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*InErrors.*/",
+          "color": "#890F02"
+        },
+        {
+          "alias": "/.*OutErrors.*/",
+          "color": "#890F02"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_netstat_Icmp_InErrors{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InErrors - Messages which the entity received but determined as having ICMP-specific errors (bad ICMP checksums, bad length, etc.)",
+          "refId": "I",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_OutErrors{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutErrors - Messages which this entity did not send due to problems discovered within ICMP, such as a lack of buffers",
+          "refId": "V",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_InDestUnreachs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "InDestUnreachs - Destination Unreachable messages received",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_Icmp_OutDestUnreachs{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "OutDestUnreachs - Destination Unreachable messages sent",
+          "refId": "B",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_IcmpMsg_InType3{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "InType3 - Destination unreachable",
+          "refId": "K",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_IcmpMsg_OutType3{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "OutType3 - Destination unreachable",
+          "refId": "L",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_netstat_IcmpMsg_InType11{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "InType11 - Time Exceeded",
+          "refId": "C",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "ICMP Errors 1",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Messages out (-) / in (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 18,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "kubernetes-node-exporter",
+          "value": "kubernetes-node-exporter"
+        },
+        "hide": 2,
+        "label": "",
+        "name": "job",
+        "options": [
+          {
+            "selected": true,
+            "text": "kubernetes-node-exporter",
+            "value": "kubernetes-node-exporter"
+          }
+        ],
+        "query": "kubernetes-node-exporter",
+        "skipUrlSync": false,
+        "type": "constant"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "ip-10-52-4-235.eu-west-2.compute.internal",
+          "value": "ip-10-52-4-235.eu-west-2.compute.internal"
+        },
+        "datasource": "thanos",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Host:",
+        "multi": false,
+        "name": "name",
+        "options": [],
+        "query": "label_values(node_boot_time_seconds, instance)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "isNone": true,
+          "text": "None",
+          "value": ""
+        },
+        "datasource": "thanos",
+        "definition": "",
+        "hide": 2,
+        "includeAll": false,
+        "label": "Host:",
+        "multi": false,
+        "name": "node",
+        "options": [],
+        "query": "label_values(node_boot_time_seconds, instance)",
+        "refresh": 1,
+        "regex": "/([^:]+):.*/",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Node - Detail - Network",
+  "uid": "fLEeJ4cZz",
+  "version": 3
+}

@@ -1,0 +1,2751 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": false,
+  "gnetId": 1860,
+  "graphTooltip": 0,
+  "id": 433,
+  "iteration": 1567792988130,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": 3,
+      "description": "Disk space used of all filesystems mounted",
+      "fill": 4,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "height": "",
+      "id": 152,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "100 - ((node_filesystem_avail_bytes{instance=~\"$name\",device!~'rootfs'} * 100) / node_filesystem_size_bytes{instance=~\"$name\",device!~'rootfs'})",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{mountpoint}}",
+          "refId": "A",
+          "step": 240
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk Space Used (Percentage)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": 3,
+      "description": "",
+      "fill": 4,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "height": "",
+      "id": 156,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_filesystem_size_bytes{instance=~\"$name\",device!~'rootfs'} - node_filesystem_avail_bytes{instance=~\"$name\",device!~'rootfs'}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{mountpoint}}",
+          "refId": "A",
+          "step": 240
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk Space Used",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": "Bytes",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "io time": "#890F02"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": 3,
+      "description": "",
+      "fill": 4,
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 42,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": null,
+        "sortDesc": null,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*read*./",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*sda.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*sdb.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*sdc.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*sdd.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*sde.*/",
+          "color": "#E24D42"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_disk_read_bytes_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Successfully read bytes",
+          "refId": "A",
+          "step": 240
+        },
+        {
+          "expr": "irate(node_disk_written_bytes_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Successfully written bytes",
+          "refId": "B",
+          "step": 240
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "I/O Usage Read / Write",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": false,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": "Bytes read (-) / write (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "ms",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "Active": "#99440A",
+        "Buffers": "#58140C",
+        "Cache": "#6D1F62",
+        "Cached": "#511749",
+        "Committed": "#508642",
+        "Dirty": "#6ED0E0",
+        "Free": "#B7DBAB",
+        "Inactive": "#EA6460",
+        "Mapped": "#052B51",
+        "PageTables": "#0A50A1",
+        "Page_Tables": "#0A50A1",
+        "Slab_Cache": "#EAB839",
+        "Swap": "#BF1B00",
+        "Swap_Cache": "#C15C17",
+        "Total": "#511749",
+        "Total RAM": "#052B51",
+        "Total RAM + Swap": "#052B51",
+        "Total Swap": "#614D93",
+        "VmallocUsed": "#EA6460"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": 2,
+      "fill": 2,
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 130,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": null,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 2,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_memory_Writeback_bytes{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Writeback - Memory which is actively being written back to disk",
+          "refId": "J",
+          "step": 4
+        },
+        {
+          "expr": "node_memory_WritebackTmp_bytes{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "WritebackTmp - Memory used by FUSE for temporary writeback buffers",
+          "refId": "K",
+          "step": 4
+        },
+        {
+          "expr": "node_memory_Dirty_bytes{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Dirty - Memory which is waiting to get written back to the disk",
+          "refId": "A",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Memory Writeback and Dirty",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": "Bytes",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 22
+      },
+      "id": 229,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Read.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*sda_.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*sdb_.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*sdc_.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*sdd_.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*sde_.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*sda1.*/",
+          "color": "#584477"
+        },
+        {
+          "alias": "/.*sda2_.*/",
+          "color": "#BA43A9"
+        },
+        {
+          "alias": "/.*sda3_.*/",
+          "color": "#F4D598"
+        },
+        {
+          "alias": "/.*sdb1.*/",
+          "color": "#0A50A1"
+        },
+        {
+          "alias": "/.*sdb2.*/",
+          "color": "#BF1B00"
+        },
+        {
+          "alias": "/.*sdb3.*/",
+          "color": "#E0752D"
+        },
+        {
+          "alias": "/.*sdc1.*/",
+          "color": "#962D82"
+        },
+        {
+          "alias": "/.*sdc2.*/",
+          "color": "#614D93"
+        },
+        {
+          "alias": "/.*sdc3.*/",
+          "color": "#9AC48A"
+        },
+        {
+          "alias": "/.*sdd1.*/",
+          "color": "#65C5DB"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#F9934E"
+        },
+        {
+          "alias": "/.*sdd3.*/",
+          "color": "#EA6460"
+        },
+        {
+          "alias": "/.*sde1.*/",
+          "color": "#E0F9D7"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#FCEACA"
+        },
+        {
+          "alias": "/.*sde3.*/",
+          "color": "#F9E2D2"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_disk_reads_completed_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 4,
+          "legendFormat": "{{device}} - Reads completed",
+          "refId": "A",
+          "step": 480
+        },
+        {
+          "expr": "irate(node_disk_writes_completed_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Writes completed",
+          "refId": "B",
+          "step": 240
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk IOps",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "iops",
+          "label": "IO read (-) / write (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "io time": "#890F02"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": 3,
+      "description": "",
+      "fill": 4,
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 22
+      },
+      "id": 127,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": null,
+        "sortDesc": null,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_disk_io_time_seconds_total{instance=~\"$name\"} [5m])",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Time spent doing I/Os",
+          "refId": "C",
+          "step": 240
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "I/O Usage Times",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": false,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": "Time",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "s",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 34
+      },
+      "id": 9,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "seriesOverrides": [
+        {
+          "alias": "/.*Read.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*sda_.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*sdb_.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*sdc_.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*sdd_.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*sde_.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*sda1.*/",
+          "color": "#584477"
+        },
+        {
+          "alias": "/.*sda2_.*/",
+          "color": "#BA43A9"
+        },
+        {
+          "alias": "/.*sda3_.*/",
+          "color": "#F4D598"
+        },
+        {
+          "alias": "/.*sdb1.*/",
+          "color": "#0A50A1"
+        },
+        {
+          "alias": "/.*sdb2.*/",
+          "color": "#BF1B00"
+        },
+        {
+          "alias": "/.*sdb3.*/",
+          "color": "#E0752D"
+        },
+        {
+          "alias": "/.*sdc1.*/",
+          "color": "#962D82"
+        },
+        {
+          "alias": "/.*sdc2.*/",
+          "color": "#614D93"
+        },
+        {
+          "alias": "/.*sdc3.*/",
+          "color": "#9AC48A"
+        },
+        {
+          "alias": "/.*sdd1.*/",
+          "color": "#65C5DB"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#F9934E"
+        },
+        {
+          "alias": "/.*sdd3.*/",
+          "color": "#EA6460"
+        },
+        {
+          "alias": "/.*sde1.*/",
+          "color": "#E0F9D7"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#FCEACA"
+        },
+        {
+          "alias": "/.*sde3.*/",
+          "color": "#F9E2D2"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_disk_reads_completed_total{instance=~\"$name\"}[5m])",
+          "intervalFactor": 4,
+          "legendFormat": "{{device}} - Reads completed",
+          "refId": "A",
+          "step": 8
+        },
+        {
+          "expr": "irate(node_disk_writes_completed_total{instance=~\"$name\"}[5m])",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Writes completed",
+          "refId": "B",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk IOps Completed",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "iops",
+          "label": "IO read (-) / write (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 34
+      },
+      "id": 33,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Read.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*sda_.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*sdb_.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*sdc_.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*sdd_.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*sde_.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*sda1.*/",
+          "color": "#584477"
+        },
+        {
+          "alias": "/.*sda2_.*/",
+          "color": "#BA43A9"
+        },
+        {
+          "alias": "/.*sda3_.*/",
+          "color": "#F4D598"
+        },
+        {
+          "alias": "/.*sdb1.*/",
+          "color": "#0A50A1"
+        },
+        {
+          "alias": "/.*sdb2.*/",
+          "color": "#BF1B00"
+        },
+        {
+          "alias": "/.*sdb3.*/",
+          "color": "#E0752D"
+        },
+        {
+          "alias": "/.*sdc1.*/",
+          "color": "#962D82"
+        },
+        {
+          "alias": "/.*sdc2.*/",
+          "color": "#614D93"
+        },
+        {
+          "alias": "/.*sdc3.*/",
+          "color": "#9AC48A"
+        },
+        {
+          "alias": "/.*sdd1.*/",
+          "color": "#65C5DB"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#F9934E"
+        },
+        {
+          "alias": "/.*sdd3.*/",
+          "color": "#EA6460"
+        },
+        {
+          "alias": "/.*sde1.*/",
+          "color": "#E0F9D7"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#FCEACA"
+        },
+        {
+          "alias": "/.*sde3.*/",
+          "color": "#F9E2D2"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_disk_read_bytes_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 4,
+          "legendFormat": "{{device}} - Read bytes",
+          "refId": "A",
+          "step": 8
+        },
+        {
+          "expr": "irate(node_disk_written_bytes_total{instance=~\"$name\"}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Written bytes",
+          "refId": "B",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk R/W Data",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "Bps",
+          "label": "Bytes read (-) / write (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 3,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 44
+      },
+      "id": 37,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Read.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*sda_.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*sdb_.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*sdc_.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*sdd_.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*sde_.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*sda1.*/",
+          "color": "#584477"
+        },
+        {
+          "alias": "/.*sda2_.*/",
+          "color": "#BA43A9"
+        },
+        {
+          "alias": "/.*sda3_.*/",
+          "color": "#F4D598"
+        },
+        {
+          "alias": "/.*sdb1.*/",
+          "color": "#0A50A1"
+        },
+        {
+          "alias": "/.*sdb2.*/",
+          "color": "#BF1B00"
+        },
+        {
+          "alias": "/.*sdb3.*/",
+          "color": "#E0752D"
+        },
+        {
+          "alias": "/.*sdc1.*/",
+          "color": "#962D82"
+        },
+        {
+          "alias": "/.*sdc2.*/",
+          "color": "#614D93"
+        },
+        {
+          "alias": "/.*sdc3.*/",
+          "color": "#9AC48A"
+        },
+        {
+          "alias": "/.*sdd1.*/",
+          "color": "#65C5DB"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#F9934E"
+        },
+        {
+          "alias": "/.*sdd3.*/",
+          "color": "#EA6460"
+        },
+        {
+          "alias": "/.*sde1.*/",
+          "color": "#E0F9D7"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#FCEACA"
+        },
+        {
+          "alias": "/.*sde3.*/",
+          "color": "#F9E2D2"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_disk_read_time_seconds_total{instance=~\"$name\"}[5m])",
+          "hide": false,
+          "intervalFactor": 4,
+          "legendFormat": "{{device}} - Read time",
+          "refId": "A",
+          "step": 8
+        },
+        {
+          "expr": "irate(node_disk_write_time_seconds_total{instance=~\"$name\"}[5m])",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Write time",
+          "refId": "B",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk R/W Time",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": "Time. read (-) / write (+)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 44
+      },
+      "id": 35,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*sda_.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*sdb_.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*sdc_.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*sdd_.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*sde_.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*sda1.*/",
+          "color": "#584477"
+        },
+        {
+          "alias": "/.*sda2_.*/",
+          "color": "#BA43A9"
+        },
+        {
+          "alias": "/.*sda3_.*/",
+          "color": "#F4D598"
+        },
+        {
+          "alias": "/.*sdb1.*/",
+          "color": "#0A50A1"
+        },
+        {
+          "alias": "/.*sdb2.*/",
+          "color": "#BF1B00"
+        },
+        {
+          "alias": "/.*sdb3.*/",
+          "color": "#E0752D"
+        },
+        {
+          "alias": "/.*sdc1.*/",
+          "color": "#962D82"
+        },
+        {
+          "alias": "/.*sdc2.*/",
+          "color": "#614D93"
+        },
+        {
+          "alias": "/.*sdc3.*/",
+          "color": "#9AC48A"
+        },
+        {
+          "alias": "/.*sdd1.*/",
+          "color": "#65C5DB"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#F9934E"
+        },
+        {
+          "alias": "/.*sdd3.*/",
+          "color": "#EA6460"
+        },
+        {
+          "alias": "/.*sde1.*/",
+          "color": "#E0F9D7"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#FCEACA"
+        },
+        {
+          "alias": "/.*sde3.*/",
+          "color": "#F9E2D2"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_disk_io_time_weighted_seconds_total{instance=~\"$name\"}[5m])",
+          "intervalFactor": 4,
+          "legendFormat": "{{device}} - IO time weighted",
+          "refId": "A",
+          "step": 8
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk IOs Weighted",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": "Time",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 54
+      },
+      "id": 133,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*Read.*/",
+          "transform": "negative-Y"
+        },
+        {
+          "alias": "/.*sda_.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*sdb_.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*sdc_.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*sdd_.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*sde_.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*sda1.*/",
+          "color": "#584477"
+        },
+        {
+          "alias": "/.*sda2_.*/",
+          "color": "#BA43A9"
+        },
+        {
+          "alias": "/.*sda3_.*/",
+          "color": "#F4D598"
+        },
+        {
+          "alias": "/.*sdb1.*/",
+          "color": "#0A50A1"
+        },
+        {
+          "alias": "/.*sdb2.*/",
+          "color": "#BF1B00"
+        },
+        {
+          "alias": "/.*sdb3.*/",
+          "color": "#E0752D"
+        },
+        {
+          "alias": "/.*sdc1.*/",
+          "color": "#962D82"
+        },
+        {
+          "alias": "/.*sdc2.*/",
+          "color": "#614D93"
+        },
+        {
+          "alias": "/.*sdc3.*/",
+          "color": "#9AC48A"
+        },
+        {
+          "alias": "/.*sdd1.*/",
+          "color": "#65C5DB"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#F9934E"
+        },
+        {
+          "alias": "/.*sdd3.*/",
+          "color": "#EA6460"
+        },
+        {
+          "alias": "/.*sde1.*/",
+          "color": "#E0F9D7"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#FCEACA"
+        },
+        {
+          "alias": "/.*sde3.*/",
+          "color": "#F9E2D2"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_disk_reads_merged_total{instance=~\"$name\"}[5m])",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Read merged",
+          "refId": "C",
+          "step": 4
+        },
+        {
+          "expr": "irate(node_disk_writes_merged_total{instance=~\"$name\"}[5m])",
+          "intervalFactor": 2,
+          "legendFormat": "{{device}} - Write merged",
+          "refId": "D",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk R/W Merged",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "iops",
+          "label": "I/Os",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 3,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 54
+      },
+      "id": 36,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*sda_.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*sdb_.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*sdc_.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*sdd_.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*sde_.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*sda1.*/",
+          "color": "#584477"
+        },
+        {
+          "alias": "/.*sda2_.*/",
+          "color": "#BA43A9"
+        },
+        {
+          "alias": "/.*sda3_.*/",
+          "color": "#F4D598"
+        },
+        {
+          "alias": "/.*sdb1.*/",
+          "color": "#0A50A1"
+        },
+        {
+          "alias": "/.*sdb2.*/",
+          "color": "#BF1B00"
+        },
+        {
+          "alias": "/.*sdb3.*/",
+          "color": "#E0752D"
+        },
+        {
+          "alias": "/.*sdc1.*/",
+          "color": "#962D82"
+        },
+        {
+          "alias": "/.*sdc2.*/",
+          "color": "#614D93"
+        },
+        {
+          "alias": "/.*sdc3.*/",
+          "color": "#9AC48A"
+        },
+        {
+          "alias": "/.*sdd1.*/",
+          "color": "#65C5DB"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#F9934E"
+        },
+        {
+          "alias": "/.*sdd3.*/",
+          "color": "#EA6460"
+        },
+        {
+          "alias": "/.*sde1.*/",
+          "color": "#E0F9D7"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#FCEACA"
+        },
+        {
+          "alias": "/.*sde3.*/",
+          "color": "#F9E2D2"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_disk_io_time_seconds_total{instance=~\"$name\"}[5m])",
+          "intervalFactor": 4,
+          "legendFormat": "{{device}} - IO time",
+          "refId": "A",
+          "step": 8
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Time Spent Doing I/Os",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": "Time",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 64
+      },
+      "id": 34,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*sda_.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*sdb_.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*sdc_.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*sdd_.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*sde_.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*sda1.*/",
+          "color": "#584477"
+        },
+        {
+          "alias": "/.*sda2_.*/",
+          "color": "#BA43A9"
+        },
+        {
+          "alias": "/.*sda3_.*/",
+          "color": "#F4D598"
+        },
+        {
+          "alias": "/.*sdb1.*/",
+          "color": "#0A50A1"
+        },
+        {
+          "alias": "/.*sdb2.*/",
+          "color": "#BF1B00"
+        },
+        {
+          "alias": "/.*sdb3.*/",
+          "color": "#E0752D"
+        },
+        {
+          "alias": "/.*sdc1.*/",
+          "color": "#962D82"
+        },
+        {
+          "alias": "/.*sdc2.*/",
+          "color": "#614D93"
+        },
+        {
+          "alias": "/.*sdc3.*/",
+          "color": "#9AC48A"
+        },
+        {
+          "alias": "/.*sdd1.*/",
+          "color": "#65C5DB"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#F9934E"
+        },
+        {
+          "alias": "/.*sdd3.*/",
+          "color": "#EA6460"
+        },
+        {
+          "alias": "/.*sde1.*/",
+          "color": "#E0F9D7"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#FCEACA"
+        },
+        {
+          "alias": "/.*sde3.*/",
+          "color": "#F9E2D2"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "irate(node_disk_io_now{instance=~\"$name\"}[5m])",
+          "intervalFactor": 4,
+          "legendFormat": "{{device}} - IO now",
+          "refId": "A",
+          "step": 8
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk IOs Current in Progress",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "iops",
+          "label": "I/Os",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 64
+      },
+      "id": 66,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*sda_.*/",
+          "color": "#7EB26D"
+        },
+        {
+          "alias": "/.*sdb_.*/",
+          "color": "#EAB839"
+        },
+        {
+          "alias": "/.*sdc_.*/",
+          "color": "#6ED0E0"
+        },
+        {
+          "alias": "/.*sdd_.*/",
+          "color": "#EF843C"
+        },
+        {
+          "alias": "/.*sde_.*/",
+          "color": "#E24D42"
+        },
+        {
+          "alias": "/.*sda1.*/",
+          "color": "#584477"
+        },
+        {
+          "alias": "/.*sda2_.*/",
+          "color": "#B7DBAB"
+        },
+        {
+          "alias": "/.*sda3_.*/",
+          "color": "#F4D598"
+        },
+        {
+          "alias": "/.*sdb1.*/",
+          "color": "#0A50A1"
+        },
+        {
+          "alias": "/.*sdb2.*/",
+          "color": "#BF1B00"
+        },
+        {
+          "alias": "/.*sdb3.*/",
+          "color": "#E0752D"
+        },
+        {
+          "alias": "/.*sdc1.*/",
+          "color": "#962D82"
+        },
+        {
+          "alias": "/.*sdc2.*/",
+          "color": "#614D93"
+        },
+        {
+          "alias": "/.*sdc3.*/",
+          "color": "#9AC48A"
+        },
+        {
+          "alias": "/.*sdd1.*/",
+          "color": "#65C5DB"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#F9934E"
+        },
+        {
+          "alias": "/.*sdd3.*/",
+          "color": "#EA6460"
+        },
+        {
+          "alias": "/.*sde1.*/",
+          "color": "#E0F9D7"
+        },
+        {
+          "alias": "/.*sdd2.*/",
+          "color": "#FCEACA"
+        },
+        {
+          "alias": "/.*sde3.*/",
+          "color": "#F9E2D2"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_textfile_scrape_error{instance=~\"$name\"}",
+          "intervalFactor": 4,
+          "legendFormat": "Textfile scrape error (1 = true)",
+          "refId": "A",
+          "step": 8
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Open Error File",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Errors",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": 3,
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 74
+      },
+      "id": 43,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_filesystem_avail_bytes{instance=~\"$name\",device!~'rootfs'}",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "{{mountpoint}} - Available",
+          "metric": "",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "node_filesystem_free_bytes{instance=~\"$name\",device!~'rootfs'}",
+          "format": "time_series",
+          "hide": true,
+          "intervalFactor": 2,
+          "legendFormat": "{{mountpoint}} - Free",
+          "refId": "B",
+          "step": 2
+        },
+        {
+          "expr": "node_filesystem_size_bytes{instance=~\"$name\",device!~'rootfs'}",
+          "format": "time_series",
+          "hide": true,
+          "intervalFactor": 2,
+          "legendFormat": "{{mountpoint}} - Size",
+          "refId": "D",
+          "step": 2
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Filesystem space available",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": "Bytes",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 74
+      },
+      "id": 41,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_filesystem_files_free{instance=~\"$name\",device!~'rootfs'}",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "{{mountpoint}} - Free file nodes",
+          "refId": "B",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "File Nodes Free",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "File Nodes",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 84
+      },
+      "id": 28,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_filefd_maximum{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 4,
+          "legendFormat": "Max open files",
+          "refId": "A",
+          "step": 8
+        },
+        {
+          "expr": "node_filefd_allocated{instance=~\"$name\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Open files",
+          "refId": "B",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "File Descriptor",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Files",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 84
+      },
+      "id": 219,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_filesystem_files{instance=~\"$name\",device!~'rootfs'}",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "{{mountpoint}} - File nodes total",
+          "refId": "A",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "File Nodes Size",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "File Nodes",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "/ ReadOnly": "#890F02"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "thanos",
+      "decimals": null,
+      "description": "",
+      "fill": 2,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 94
+      },
+      "id": 44,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_filesystem_readonly{instance=~\"$name\",device!~'rootfs'}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{mountpoint}} - ReadOnly",
+          "refId": "C",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Filesystem in ReadOnly",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Read Only",
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 18,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "ip-10-52-4-235.eu-west-2.compute.internal",
+          "value": "ip-10-52-4-235.eu-west-2.compute.internal"
+        },
+        "datasource": "thanos",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Host:",
+        "multi": false,
+        "name": "name",
+        "options": [],
+        "query": "label_values(node_boot_time_seconds, instance)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "isNone": true,
+          "text": "None",
+          "value": ""
+        },
+        "datasource": "thanos",
+        "definition": "",
+        "hide": 2,
+        "includeAll": false,
+        "label": "Host:",
+        "multi": false,
+        "name": "node",
+        "options": [],
+        "query": "label_values(node_boot_time_seconds, instance)",
+        "refresh": 1,
+        "regex": "/([^:]+):.*/",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Node - Detail - Disks and Filesystem",
+  "uid": "_JM614cZz",
+  "version": 5
+}
